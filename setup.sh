@@ -49,9 +49,9 @@ echo "WEBPASSWORD=$(openssl rand -base64 15 | tr -d '\n')" >> .env
 echo "PIHOLE_DNS=10.2.0.200" >> .env
 
 if [ -f /proc/cpuinfo ] && grep -q "Raspberry Pi" /proc/cpuinfo; then
-    echo "UNBOUND_IMAGE=linuxserver/unbound-rpi" >> .env
+    echo "UNBOUND_IMAGE=unbound-rpi:latest" >> .env
 else
-    echo "UNBOUND_IMAGE=linuxserver/unbound:latest" >> .env
+    echo "UNBOUND_IMAGE=unbound:latest" >> .env
 fi
 
 
