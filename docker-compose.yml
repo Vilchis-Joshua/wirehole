@@ -78,9 +78,13 @@ services:
     volumes:
       - etc-pihole:/etc/pihole/
       - etc-dnsmasq.d:/etc/dnsmasq.d/
-    cap_add:
-      - NET_ADMIN
+    # cap_add:
+    #   - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     networks:
       private_network:
         ipv4_address: 10.2.0.100
-    env_file: ./.env
+    environment:
+      TZ: America/New_York
+      TEMPERATUREUNIT: f
+      WEBTHEME: 'dark'
+    env_file: .env
