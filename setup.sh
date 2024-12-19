@@ -25,7 +25,7 @@ echo "WIREGUARD_PEER_DNS=10.2.0.100" >> .env
 
 # Wireguard settings
 # Number of peers (clients) to generate
-# echo "WIREGUARD_PEERS=1" >> .env
+# echo "WIREGUARD_PEERS=1" >> .env # For some reason this doesn't work?
 echo "PEERS=1" >> .env
 
 # Wireguard-UI settings
@@ -47,3 +47,9 @@ echo "WEBPASSWORD=$(openssl rand -base64 15 | tr -d '\n')" >> .env
 
 # IP address for the Unbound server used by Pi-hole
 echo "PIHOLE_DNS=10.2.0.200" >> .env
+
+if [ -f /proc/cpuinfo ] && grep -q "Raspberry Pi" /proc/cpuinfo; then
+    echo "UNBOUND_IMAGE=linuxserver/mvance-rpi:latest" >> .env
+else
+    echo "UNBOUND_IMAGE=linuxserver/unbound:latest" >> .env
+fi
