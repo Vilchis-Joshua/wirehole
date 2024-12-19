@@ -88,5 +88,5 @@ services:
     environment:
       TZ: America/New_York
       TEMPERATUREUNIT: f
-      WEBTHEME: 'dark'
+      WEBTHEME: 'default-dark'
     env_file: .env
