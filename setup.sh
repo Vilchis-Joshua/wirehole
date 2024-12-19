@@ -53,3 +53,7 @@ if [ -f /proc/cpuinfo ] && grep -q "Raspberry Pi" /proc/cpuinfo; then
 else
     echo "UNBOUND_IMAGE=linuxserver/unbound:latest" >> .env
 fi
+
+
+# Run docker compose
+sudo docker compose up -d --force-recreate --remove-orphans
